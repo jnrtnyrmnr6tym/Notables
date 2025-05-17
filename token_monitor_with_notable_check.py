@@ -713,6 +713,42 @@ def try_decode_metaplex_data(data_str):
         logger.error(f"Error procesando datos de Metaplex: {str(e)}")
         return None
 
+def extract_token_metadata(webhook_data):
+    try:
+        # Extraer la dirección del token
+        token_address = webhook_data.get('tokenTransfers', [{}])[0].get('mint')
+        if not token_address:
+            logger.error("No se pudo encontrar la dirección del token en el webhook")
+            return None
+
+        logger.info(f"Obteniendo metadatos para token: {token_address}")
+        
+        # Llamar a la API de Helius para obtener metadatos
+        url = f"https://api.helius.xyz/v0/tokens/metadata?api-key={HELIUS_API_KEY}"
+        data = {
+            "mintAccounts": [token_address]
+        }
+        
+        logger.info(f"Llamando a Helius API: {url}")
+        response = requests.post(url, json=data)
+        
+        if response.status_code != 200:
+            logger.error(f"Error al obtener metadatos de Helius: {response.status_code} - {response.text}")
+            return None
+            
+        metadata = response.json()
+        logger.info(f"Metadatos recibidos de Helius: {metadata}")
+        
+        if not metadata or not metadata[0]:
+            logger.error("No se encontraron metadatos para el token")
+            return None
+            
+        return metadata[0]
+        
+    except Exception as e:
+        logger.error(f"Error al extraer metadatos: {str(e)}")
+        return None
+
 def main():
     """Función principal."""
     parser = argparse.ArgumentParser(description="Monitor de tokens con verificación de notable followers")

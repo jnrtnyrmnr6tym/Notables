@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Logs
+*.log
+logs/
+
+# Cache
+cache/
+ipfs_cache/
+
+# IDE
+.vscode/
+.idea/
+
+# Archivos temporales
+*.tmp
+*.temp
+*.swp
+
+# Archivos de datos sensibles
+*_cookies.json
+*.env
+
+# Archivos de prueba
+test_*.json
+*_test_output.txt
+*_results.json
+*_data.json
+
+# Otros
+.DS_Store
+Thumbs.db 

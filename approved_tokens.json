@@ -1,0 +1,103 @@
+[
+  {
+    "name": "NotableCoin",
+    "symbol": "NTBL",
+    "token_address": "8wnN6EuyqsNvXD5pbF9MErcL2QB1eZ4pTmb4wwMGVXwj",
+    "twitter_username": "notablecoin",
+    "notable_followers_count": 25,
+    "approved": true,
+    "timestamp": "2023-10-15T14:32:45Z"
+  },
+  {
+    "name": "LaunchToken",
+    "symbol": "LNCH",
+    "token_address": "9wnN6EuyqsNvXD5pbF9MErcL2QB1eZ4pTmb4wwMGVXwk",
+    "twitter_username": "launchtoken",
+    "notable_followers_count": 15,
+    "approved": true,
+    "timestamp": "2023-10-16T10:15:22Z"
+  },
+  {
+    "name": "SolanaGem",
+    "symbol": "SGEM",
+    "token_address": "7wnN6EuyqsNvXD5pbF9MErcL2QB1eZ4pTmb4wwMGVXwl",
+    "twitter_username": "solanagem",
+    "notable_followers_count": 8,
+    "approved": true,
+    "timestamp": "2023-10-17T08:45:12Z"
+  },
+  {
+    "name": "MoonShot",
+    "symbol": "MOON",
+    "token_address": "6wnN6EuyqsNvXD5pbF9MErcL2QB1eZ4pTmb4wwMGVXwm",
+    "twitter_username": "moonshot_token",
+    "notable_followers_count": 12,
+    "approved": true,
+    "timestamp": "2023-10-18T16:22:33Z"
+  },
+  {
+    "name": "StarDust",
+    "symbol": "DUST",
+    "token_address": "5wnN6EuyqsNvXD5pbF9MErcL2QB1eZ4pTmb4wwMGVXwn",
+    "twitter_username": "stardust_sol",
+    "notable_followers_count": 6,
+    "approved": true,
+    "timestamp": "2023-10-19T09:11:05Z"
+  },
+  {
+    "name": "RocketFuel",
+    "symbol": "FUEL",
+    "token_address": "4wnN6EuyqsNvXD5pbF9MErcL2QB1eZ4pTmb4wwMGVXwo",
+    "twitter_username": "rocketfuel_sol",
+    "notable_followers_count": 18,
+    "approved": true,
+    "timestamp": "2023-10-20T11:33:47Z"
+  },
+  {
+    "name": "GalaxyToken",
+    "symbol": "GLXY",
+    "token_address": "3wnN6EuyqsNvXD5pbF9MErcL2QB1eZ4pTmb4wwMGVXwp",
+    "twitter_username": "galaxy_token",
+    "notable_followers_count": 22,
+    "approved": true,
+    "timestamp": "2023-10-21T14:55:19Z"
+  },
+  {
+    "name": "SolarFlare",
+    "symbol": "FLARE",
+    "token_address": "2wnN6EuyqsNvXD5pbF9MErcL2QB1eZ4pTmb4wwMGVXwq",
+    "twitter_username": "solarflare_token",
+    "notable_followers_count": 10,
+    "approved": true,
+    "timestamp": "2023-10-22T17:28:36Z"
+  },
+  {
+    "name": "CosmicRay",
+    "symbol": "CRAY",
+    "token_address": "1wnN6EuyqsNvXD5pbF9MErcL2QB1eZ4pTmb4wwMGVXwr",
+    "twitter_username": "cosmic_ray_sol",
+    "notable_followers_count": 14,
+    "approved": true,
+    "timestamp": "2023-10-23T08:42:51Z"
+  },
+  {
+    "name": "NebulaCoin",
+    "symbol": "NEBL",
+    "token_address": "0wnN6EuyqsNvXD5pbF9MErcL2QB1eZ4pTmb4wwMGVXws",
+    "twitter_username": "nebula_coin",
+    "notable_followers_count": 30,
+    "approved": true,
+    "timestamp": "2023-10-24T12:19:07Z"
+  },
+  {
+    "token_address": "8cczMscrrn2eUBfE4KvfBPVpYBuKN2zzxnTSpr1jcyRw",
+    "ipfs_uri": "https://ipfs.io/ipfs/bafkreia7yi42pk63tsp7wzm34264bxfgt3nyekqa5m4hj5xrfhxjx4lmqm",
+    "name": "burger coin",
+    "symbol": "BURGER",
+    "description": "@launchcoin $burger + burger coin",
+    "twitter_username": "PackedSpliffy",
+    "notable_followers_count": 89,
+    "approved": true,
+    "timestamp": "2025-05-15 14:19:26"
+  }
+]

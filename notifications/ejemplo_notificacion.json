@@ -1,0 +1,26 @@
+{
+  "accountData": [],
+  "description": "",
+  "events": [],
+  "fee": 0,
+  "feePayer": "",
+  "instructions": [],
+  "nativeTransfers": [],
+  "signature": "",
+  "slot": 0,
+  "source": "",
+  "timestamp": 0,
+  "tokenTransfers": [
+    {
+      "fromTokenAccount": "",
+      "fromUserAccount": "",
+      "mint": "TOKEN_ADDRESS_AQUI",
+      "toTokenAccount": "",
+      "toUserAccount": "",
+      "tokenAmount": 0,
+      "tokenStandard": ""
+    }
+  ],
+  "transactionError": null,
+  "type": "TOKEN_MINT"
+} 

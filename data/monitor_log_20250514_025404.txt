@@ -1,0 +1,10 @@
+[2025-05-14 02:54:04] Iniciando monitoreo de tokens para 5qWya6UjwWnGVhdSBL3hyZ7B45jbk6Byt1hwd7ohEGXE
+[2025-05-14 02:54:04] Monitoreo iniciado exitosamente
+[2025-05-14 02:54:04] Intervalo de verificación: 60 segundos
+[2025-05-14 02:54:04] Iniciando búsqueda de nuevos tokens...
+[2025-05-14 02:54:04] Modo de prueba activado: Usando tokens de prueba predefinidos
+[2025-05-14 02:54:04] Se encontraron 1 nuevos tokens
+[2025-05-14 02:54:04] Procesando token: 2YQwCagdDrtxtMVU1mKa51PAyabDbshsMDg74fV4KirB
+[2025-05-14 02:54:05] Token procesado: 2YQwCagdDrtxtMVU1mKa51PAyabDbshsMDg74fV4KirB
+[2025-05-14 02:54:05]   - Creador Twitter: @0xqifei
+[2025-05-14 02:54:05]   - Menciones: launchcoin

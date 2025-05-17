@@ -14,7 +14,8 @@ setup(
         "pytest-cov>=4.0.0",
         "black>=23.0.0",
         "flake8>=6.0.0",
-        "mypy>=1.0.0"
+        "mypy>=1.0.0",
+        "playwright>=1.40.0"
     ],
     python_requires=">=3.9",
 ) 

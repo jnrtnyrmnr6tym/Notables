@@ -1,6 +1,6 @@
 [build]
 builder = "nixpacks"
-buildCommand = "pip install -e ."
+buildCommand = "pip install -e . && playwright install chromium"
 
 [deploy]
 startCommand = "gunicorn webhook_server:app --bind 0.0.0.0:$PORT"

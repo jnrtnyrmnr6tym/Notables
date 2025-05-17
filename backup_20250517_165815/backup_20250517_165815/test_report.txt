@@ -1,0 +1,24 @@
+
+== Checking cookies ==
+Cookies are valid.
+
+
+== Processing real token: Bq3YFeKqHkUzZGs8HFhoUFfaGs258keoeGXGoarEW4S2 ==
+[DEBUG] Protokols API URL: https://api.protokols.io/api/trpc/influencers.getFullTwitterKolInitial?input=%7B%22json%22%3A%20%7B%22username%22%3A%20%22joyhodling%22%7D%7D
+[DEBUG] Status code: 404
+[DEBUG] Response text: {"error":{"json":{"message":"NOT_FOUND","code":-32004,"data":{"code":"NOT_FOUND","httpStatus":404,"path":"influencers.getFullTwitterKolInitial"}}}}
+
+
+== Querying internal API for the token ==
+GET http://localhost:5000/api/token/Bq3YFeKqHkUzZGs8HFhoUFfaGs258keoeGXGoarEW4S2 -> 404
+<!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+
+
+== Checking if the token is in approved_tokens.json ==
+Is token approved?: NO
+
+== Last events from the main log ==

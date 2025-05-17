@@ -1,0 +1,90 @@
+{
+  "token_address": "DBBmyR6ePQLA6qLYBCcL2BsZBVKNCop3zTsfciUycbyy",
+  "ipfs_uri": "https://ipfs.io/ipfs/bafkreigdubpr5ut4vn4aayh3e4l4kzgzez6w7os7376abvw6iux3o6epni",
+  "twitter_username": "ebhac17",
+  "metadata": {
+    "jsonrpc": "2.0",
+    "result": {
+      "interface": "FungibleToken",
+      "id": "DBBmyR6ePQLA6qLYBCcL2BsZBVKNCop3zTsfciUycbyy",
+      "content": {
+        "$schema": "https://schema.metaplex.com/nft1.0.json",
+        "json_uri": "https://ipfs.io/ipfs/bafkreigdubpr5ut4vn4aayh3e4l4kzgzez6w7os7376abvw6iux3o6epni",
+        "files": [
+          {
+            "uri": "https://ipfs.io/ipfs/bafkreicsu2wpovw2ydlbfhg7gqhyw3wrq7vlpvl23crnlgtggqxdrcdajm",
+            "cdn_uri": "https://cdn.helius-rpc.com/cdn-cgi/image//https://ipfs.io/ipfs/bafkreicsu2wpovw2ydlbfhg7gqhyw3wrq7vlpvl23crnlgtggqxdrcdajm",
+            "mime": "image/png"
+          }
+        ],
+        "metadata": {
+          "description": "A brother of @launchcoin, but on BNB Chain.\nIntroducing $SHIFT . \nToken CA : https://t.co/TGTLLYEFed\n\nTime for shifting.\nReply to any tweet with @shift +name to turn it into a coin. Not a financial advice.",
+          "name": "name to turn it into a coin. Not",
+          "symbol": "SHIFT",
+          "token_standard": "Fungible"
+        },
+        "links": {
+          "image": "https://ipfs.io/ipfs/bafkreicsu2wpovw2ydlbfhg7gqhyw3wrq7vlpvl23crnlgtggqxdrcdajm"
+        }
+      },
+      "authorities": [
+        {
+          "address": "AD5kshkmqnxCWH3RSDtc7iaL6baFcUSgvGtuYTMRq3CB",
+          "scopes": [
+            "full"
+          ]
+        }
+      ],
+      "compression": {
+        "eligible": false,
+        "compressed": false,
+        "data_hash": "",
+        "creator_hash": "",
+        "asset_hash": "",
+        "tree": "",
+        "seq": 0,
+        "leaf_id": 0
+      },
+      "grouping": [],
+      "royalty": {
+        "royalty_model": "creators",
+        "target": null,
+        "percent": 0.0,
+        "basis_points": 0,
+        "primary_sale_happened": false,
+        "locked": false
+      },
+      "creators": [],
+      "ownership": {
+        "frozen": false,
+        "delegated": false,
+        "delegate": null,
+        "ownership_model": "token",
+        "owner": ""
+      },
+      "supply": null,
+      "mutable": true,
+      "burnt": false,
+      "token_info": {
+        "supply": 1000000000000000000,
+        "decimals": 9,
+        "token_program": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+      }
+    },
+    "id": "my-id"
+  },
+  "ipfs_content": {
+    "name": "name to turn it into a coin. Not",
+    "symbol": "SHIFT",
+    "description": "A brother of @launchcoin, but on BNB Chain.\nIntroducing $SHIFT . \nToken CA : https://t.co/TGTLLYEFed\n\nTime for shifting.\nReply to any tweet with @shift +name to turn it into a coin. Not a financial advice.",
+    "image": "https://ipfs.io/ipfs/bafkreicsu2wpovw2ydlbfhg7gqhyw3wrq7vlpvl23crnlgtggqxdrcdajm",
+    "metadata": {
+      "mentionId": "bc137764-0bdb-4e96-8f85-bc9cd67ae163",
+      "tweetId": "1922990007867899977",
+      "twitterConversationId": "1922990007867899977",
+      "tweetCreatorUserId": "275421448",
+      "tweetReplyAuthorId": "275421448",
+      "tweetCreatorUsername": "ebhac17"
+    }
+  }
+}

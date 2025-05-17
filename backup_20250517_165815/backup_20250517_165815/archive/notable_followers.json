@@ -1,0 +1,63 @@
+{
+  "jack": {
+    "username": "jack",
+    "display_name": "jack",
+    "followers_count": 6473465,
+    "following_count": 3,
+    "is_verified": true,
+    "description": "no state is the best state",
+    "profile_created_at": "2006-03-21T20:50:14.000Z",
+    "engagement_data": {
+      "smart_followers_count": 1569,
+      "kol_score": 10963,
+      "avg_views": 207183,
+      "avg_likes": 1087.57,
+      "avg_retweets": 122.857,
+      "avg_comments": 112.714,
+      "engagement_ratio": 0.00638635
+    },
+    "notable_followers_count": 1569
+  },
+  "elonmusk": {
+    "username": "elonmusk",
+    "display_name": "gorklon rust",
+    "followers_count": 219930747,
+    "following_count": 1131,
+    "is_verified": true,
+    "description": "",
+    "profile_created_at": "2009-06-02T20:12:29.000Z",
+    "engagement_data": {
+      "smart_followers_count": 3348,
+      "kol_score": 41334,
+      "avg_views": 36480000,
+      "avg_likes": 119646,
+      "avg_retweets": 18835,
+      "avg_comments": 7130.52,
+      "engagement_ratio": 0.00399153
+    },
+    "notable_followers_count": 3348
+  },
+  "Ga__ke": {
+    "username": "Ga__ke",
+    "display_name": "gake",
+    "followers_count": 100501,
+    "following_count": 4828,
+    "is_verified": true,
+    "description": "NOT Financial Advice | For Collabs: https://t.me/teamgake | vector: https://vec.fun/ref/Ga__ke | gmgn: https://gmgn.ai/?ref=jyBgpHBn&chain=sol",
+    "profile_created_at": "2009-11-01T02:46:00.000Z",
+    "engagement_data": {
+      "smart_followers_count": 617,
+      "kol_score": 6484,
+      "avg_views": 42797,
+      "avg_likes": 272.558,
+      "avg_retweets": 17.4058,
+      "avg_comments": 111.841,
+      "engagement_ratio": 0.0093886
+    },
+    "notable_followers_count": 617
+  },
+  "vitalik_buterin": {
+    "error": "max_retries_exceeded",
+    "message": "Se alcanzó el número máximo de reintentos (3)"
+  }
+}

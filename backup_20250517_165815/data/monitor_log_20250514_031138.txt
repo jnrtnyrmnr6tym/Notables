@@ -1,0 +1,25 @@
+[2025-05-14 03:11:38] Iniciando monitoreo de tokens para 5qWya6UjwWnGVhdSBL3hyZ7B45jbk6Byt1hwd7ohEGXE
+[2025-05-14 03:11:38] Monitoreo iniciado exitosamente
+[2025-05-14 03:11:38] Intervalo de verificación: 30 segundos
+[2025-05-14 03:11:38] Iniciando búsqueda de nuevos tokens...
+[2025-05-14 03:11:38] Buscando tokens creados por 5qWya6UjwWnGVhdSBL3hyZ7B45jbk6Byt1hwd7ohEGXE...
+[2025-05-14 03:11:38] Error en la API: 404
+[2025-05-14 03:11:40] Error en la API: 404
+[2025-05-14 03:11:42] Error en la API: 404
+[2025-05-14 03:11:42] No se encontraron tokens directamente. Intentando método alternativo...
+[2025-05-14 03:11:42] Error en la API: 404
+[2025-05-14 03:11:43] Error en la API: 404
+[2025-05-14 03:11:46] Error en la API: 404
+[2025-05-14 03:11:46] Se encontraron 0 tokens
+[2025-05-14 03:11:46] No se encontraron nuevos tokens
+[2025-05-14 03:12:16] Iniciando búsqueda de nuevos tokens...
+[2025-05-14 03:12:16] Buscando tokens creados por 5qWya6UjwWnGVhdSBL3hyZ7B45jbk6Byt1hwd7ohEGXE...
+[2025-05-14 03:12:16] Error en la API: 404
+[2025-05-14 03:12:17] Error en la API: 404
+[2025-05-14 03:12:19] Error en la API: 404
+[2025-05-14 03:12:19] No se encontraron tokens directamente. Intentando método alternativo...
+[2025-05-14 03:12:20] Error en la API: 404
+[2025-05-14 03:12:21] Error en la API: 404
+[2025-05-14 03:12:23] Error en la API: 404
+[2025-05-14 03:12:23] Se encontraron 0 tokens
+[2025-05-14 03:12:23] No se encontraron nuevos tokens

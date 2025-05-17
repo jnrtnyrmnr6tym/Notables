@@ -1,0 +1,90 @@
+{
+  "token_address": "GV74pg6zi1Hy19woBW9msKUqxxvw63A7SQ15tGj5wWJ4",
+  "ipfs_uri": "https://ipfs.io/ipfs/bafkreic5oepawttkeiujz7lka35pr53onabtljpemminbqtti7gtfyofcq",
+  "twitter_username": "Ballisticdim4o",
+  "metadata": {
+    "jsonrpc": "2.0",
+    "result": {
+      "interface": "FungibleToken",
+      "id": "GV74pg6zi1Hy19woBW9msKUqxxvw63A7SQ15tGj5wWJ4",
+      "content": {
+        "$schema": "https://schema.metaplex.com/nft1.0.json",
+        "json_uri": "https://ipfs.io/ipfs/bafkreic5oepawttkeiujz7lka35pr53onabtljpemminbqtti7gtfyofcq",
+        "files": [
+          {
+            "uri": "https://ipfs.io/ipfs/bafkreicct3hqypxqqjlw5udl6kynn7k7bga7zyroonyr3gdwx7xktjfc4y",
+            "cdn_uri": "https://cdn.helius-rpc.com/cdn-cgi/image//https://ipfs.io/ipfs/bafkreicct3hqypxqqjlw5udl6kynn7k7bga7zyroonyr3gdwx7xktjfc4y",
+            "mime": "image/png"
+          }
+        ],
+        "metadata": {
+          "description": "@launchcoin $zdravei +zdravei kaksi",
+          "name": "zdravei kaksi",
+          "symbol": "ZDRAVEI",
+          "token_standard": "Fungible"
+        },
+        "links": {
+          "image": "https://ipfs.io/ipfs/bafkreicct3hqypxqqjlw5udl6kynn7k7bga7zyroonyr3gdwx7xktjfc4y"
+        }
+      },
+      "authorities": [
+        {
+          "address": "BJSMyRWfxW1QHapFcfPHrEnHpH6HNdogKsazW43yU8rB",
+          "scopes": [
+            "full"
+          ]
+        }
+      ],
+      "compression": {
+        "eligible": false,
+        "compressed": false,
+        "data_hash": "",
+        "creator_hash": "",
+        "asset_hash": "",
+        "tree": "",
+        "seq": 0,
+        "leaf_id": 0
+      },
+      "grouping": [],
+      "royalty": {
+        "royalty_model": "creators",
+        "target": null,
+        "percent": 0.0,
+        "basis_points": 0,
+        "primary_sale_happened": false,
+        "locked": false
+      },
+      "creators": [],
+      "ownership": {
+        "frozen": false,
+        "delegated": false,
+        "delegate": null,
+        "ownership_model": "token",
+        "owner": ""
+      },
+      "supply": null,
+      "mutable": true,
+      "burnt": false,
+      "token_info": {
+        "supply": 1000000000000000000,
+        "decimals": 9,
+        "token_program": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+      }
+    },
+    "id": "my-id"
+  },
+  "ipfs_content": {
+    "name": "zdravei kaksi",
+    "symbol": "ZDRAVEI",
+    "description": "@launchcoin $zdravei +zdravei kaksi",
+    "image": "https://ipfs.io/ipfs/bafkreicct3hqypxqqjlw5udl6kynn7k7bga7zyroonyr3gdwx7xktjfc4y",
+    "metadata": {
+      "mentionId": "d44fbaca-f17a-4402-bec0-a786831dc353",
+      "tweetId": "1922602768520314988",
+      "twitterConversationId": "1922602768520314988",
+      "tweetCreatorUserId": "1464993954978541573",
+      "tweetReplyAuthorId": "1464993954978541573",
+      "tweetCreatorUsername": "Ballisticdim4o"
+    }
+  }
+}

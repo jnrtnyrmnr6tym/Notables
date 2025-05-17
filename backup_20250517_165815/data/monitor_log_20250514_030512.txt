@@ -1,0 +1,7 @@
+[2025-05-14 03:05:12] Iniciando monitoreo de tokens para 5qWya6UjwWnGVhdSBL3hyZ7B45jbk6Byt1hwd7ohEGXE
+[2025-05-14 03:05:12] Monitoreo iniciado exitosamente
+[2025-05-14 03:05:12] Intervalo de verificación: 30 segundos
+[2025-05-14 03:05:12] Iniciando búsqueda de nuevos tokens...
+[2025-05-14 03:05:12] Buscando tokens creados por 5qWya6UjwWnGVhdSBL3hyZ7B45jbk6Byt1hwd7ohEGXE...
+[2025-05-14 03:05:12] Error en la API: 404
+[2025-05-14 03:05:14] Error en la API: 404

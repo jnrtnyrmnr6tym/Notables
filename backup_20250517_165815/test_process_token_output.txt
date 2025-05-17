@@ -1,0 +1,3 @@
+[DEBUG] Protokols API URL: https://api.protokols.io/api/trpc/influencers.getFullTwitterKolInitial?input=%7B%22json%22%3A%20%7B%22username%22%3A%20%22joyhodling%22%7D%7D
+[DEBUG] Status code: 404
+[DEBUG] Response text: {"error":{"json":{"message":"NOT_FOUND","code":-32004,"data":{"code":"NOT_FOUND","httpStatus":404,"path":"influencers.getFullTwitterKolInitial"}}}}

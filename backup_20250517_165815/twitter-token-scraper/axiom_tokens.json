@@ -1,0 +1,20 @@
+[
+  {
+    "name": "sb-access-token",
+    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoZW50aWNhdGVkVXNlcklkIjoiZjE1MzQzNzQtMDQ5NC00NmVhLTg1NjgtYjdkMWZkN2ZhNTA1IiwiaWF0IjoxNzQ3MTgxNzMyLCJleHAiOjE3NDcxODI2OTJ9.mWs6C74CL_6IMM_9MhWMSf2HRn42Ll2d2WWbdLEosAg",
+    "domain": "axiom.trade",
+    "path": "/",
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "sb-refresh-token",
+    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWZyZXNoVG9rZW5JZCI6ImNlMmMwNjA1LWJmNWEtNGFiYy1hNTI0LWQwYjNkYzgxNzhmZiIsImlhdCI6MTc0NzE4MTI4OX0.2-1laFIb1wRjK41CbBjGQJ25SekRY-73xZC_oWpDJnk",
+    "domain": "axiom.trade",
+    "path": "/",
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  }
+]

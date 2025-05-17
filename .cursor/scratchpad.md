@@ -29,10 +29,84 @@
    - Mantener el historial de cambios en "Resumen de la sesión"
 
 ## Background and Motivation
-Hemos implementado un sistema de webhooks para detectar nuevos tokens en Solana y enviar notificaciones a Telegram. El sistema está diseñado para:
-1. Recibir webhooks de Helius con información sobre nuevos tokens
-2. Procesar la información del token, incluyendo metadatos y datos de notables
-3. Enviar notificaciones formateadas a un canal de Telegram
+El proyecto consiste en un script que procesa webhooks de tokens, obtiene metadatos desde IPFS, verifica seguidores notables y envía notificaciones a Telegram.
+
+## Current Status / Progress Tracking
+- ✅ Script principal `test_webhook_local.py` funcionando correctamente
+- ✅ Procesamiento de webhooks operativo
+- ✅ Extracción de metadatos desde IPFS funcionando
+- ✅ Obtención de seguidores notables operativa
+- ✅ Envío de mensajes e imágenes a Telegram funcionando
+- ✅ Sistema de logging configurado y operativo
+
+## Project Status Board
+- [x] Procesamiento de webhooks
+- [x] Extracción de metadatos
+- [x] Obtención de seguidores notables
+- [x] Envío a Telegram
+- [x] Manejo de errores
+- [x] Logging
+
+## Lessons
+- El código actual está funcionando correctamente y no requiere optimizaciones
+- Las cookies de Protokols funcionan mejor con la implementación actual
+- El sistema de logging actual es útil para debugging
+- Los timeouts actuales son apropiados para el funcionamiento del sistema
+
+## Executor's Feedback or Assistance Requests
+No se requieren cambios en este momento. El sistema está funcionando según lo esperado.
+
+## Key Challenges and Analysis
+- El sistema maneja correctamente los errores en cada etapa
+- La integración con Telegram funciona correctamente, incluyendo el envío de imágenes
+- El procesamiento de cookies de Protokols es robusto
+- Los logs proporcionan información útil para debugging
+
+## High-level Task Breakdown
+1. **Documentación del Sistema Actual** ✅
+   - [x] Documentar el flujo completo
+   - [x] Identificar componentes críticos
+   - [x] Registrar configuraciones exitosas
+
+2. **Optimización de Componentes** 🔄
+   - [ ] Implementar caché para metadatos de IPFS
+   - [ ] Optimizar llamadas a Protokols
+   - [ ] Mejorar manejo de rate limits
+
+3. **Mejoras de Escalabilidad**
+   - [ ] Implementar procesamiento asíncrono
+   - [ ] Añadir sistema de colas
+   - [ ] Optimizar uso de memoria
+
+4. **Monitoreo y Métricas**
+   - [ ] Implementar métricas de rendimiento
+   - [ ] Añadir alertas de sistema
+   - [ ] Mejorar logging
+
+## Project Status Board
+- [x] Análisis del sistema actual
+- [x] Identificación de componentes críticos
+- [ ] Implementación de optimizaciones
+- [ ] Mejoras de escalabilidad
+- [ ] Sistema de monitoreo
+
+## Executor's Feedback or Assistance Requests
+El sistema actual funciona correctamente, pero necesitamos:
+1. Confirmar si se deben mantener todas las integraciones con bots de trading
+2. Verificar si se necesita implementar el sistema de colas
+3. Definir métricas específicas para monitoreo
+
+## Lessons
+1. El formato del webhook es crítico y debe validarse
+2. Los timeouts cortos (5 segundos) son efectivos
+3. El logging detallado es esencial para debugging
+4. La estructura modular facilita el mantenimiento
+
+## Next Steps
+1. Implementar optimizaciones identificadas
+2. Mejorar la escalabilidad del sistema
+3. Añadir sistema de monitoreo
+4. Documentar mejoras y cambios
 
 ## Cambio de estrategia: migración a canal de Telegram
 
@@ -891,3 +965,727 @@ tail -f /var/log/nginx/error.log
 3. Comenzar con la refactorización del procesamiento de tokens
 
 ---
+
+# Prueba de Webhook - Token Monitoring System
+
+## Background and Motivation
+Se realizó una prueba completa del sistema de monitoreo de tokens utilizando un webhook de ejemplo que simula el minting de un token Wrapped SOL. El objetivo era verificar el flujo completo desde la recepción del webhook hasta el envío del mensaje a Telegram.
+
+## Key Challenges and Analysis
+1. El webhook contiene información detallada sobre una transacción de minting
+2. Se requiere procesar múltiples fuentes de datos:
+   - Metadatos del token desde Helius
+   - Información de IPFS
+   - Datos de notables desde Twitter
+3. El formato del mensaje debe incluir enlaces y formateo HTML para Telegram
+
+## High-level Task Breakdown
+1. ✅ Procesar webhook de entrada
+2. ✅ Extraer metadatos del token
+3. ✅ Obtener información de IPFS
+4. ✅ Consultar datos de notables
+5. ✅ Formatear y enviar mensaje a Telegram
+
+## Project Status Board
+- [x] Recepción y procesamiento del webhook
+- [x] Extracción de metadatos del token
+- [x] Obtención de datos de IPFS
+- [x] Consulta de notables
+- [x] Envío de mensaje a Telegram
+
+## Executor's Feedback or Assistance Requests
+La prueba se completó exitosamente. El sistema:
+1. Procesó correctamente el webhook
+2. Obtuvo los metadatos del token (MOO)
+3. Recuperó la información de IPFS
+4. Obtuvo los datos de notables del creador (@highfrommemes)
+5. Generó y envió el mensaje a Telegram con éxito
+
+## Lessons
+1. En PowerShell, usar `Get-Content` en lugar de redirección `<` para pasar datos a scripts Python
+2. El sistema maneja correctamente:
+   - Tokens con metadatos en IPFS
+   - Creadores con seguidores notables
+   - Formateo HTML para Telegram
+   - Enlaces a bots de trading
+3. El mensaje incluye:
+   - Nombre y símbolo del token
+   - Dirección del contrato
+   - Creador y sus seguidores notables
+   - Enlaces a plataformas de trading
+
+## Resultados de la Prueba
+### Token Detectado
+- Nombre: MOO ($MOO)
+- CA: A4yYyC4p5jTJd7GzqrtZSi3ULz4ccZqbPLminC64DtuV
+- Creador: @highfrommemes
+- Total de Notables: 13
+
+### Top 5 Notables
+1. @trader1sz (659.7K followers)
+2. @SolJakey (196.4K followers)
+3. @TylerDurden (185.6K followers)
+4. @iamnoahmiller (151.2K followers)
+5. @_ShaniceBest (53.7K followers)
+
+### Estado Final
+✅ Prueba completada exitosamente
+✅ Mensaje enviado a Telegram
+✅ Todos los enlaces y formateo funcionando correctamente
+
+# Plan de Acción Post-Prueba
+
+## Análisis de Resultados
+La prueba del sistema de monitoreo de tokens ha sido exitosa, demostrando que:
+1. El procesamiento de webhooks funciona correctamente
+2. La integración con Helius y IPFS es robusta
+3. El sistema de notables followers está operativo
+4. Las notificaciones de Telegram se envían con el formato correcto
+
+## Próximos Pasos Prioritarios
+
+### 1. Optimización del Sistema (Alta Prioridad)
+- [ ] Implementar sistema de caché para metadatos de tokens
+- [ ] Optimizar el procesamiento de webhooks para reducir latencia
+- [ ] Mejorar el manejo de errores y reintentos
+- [ ] Implementar métricas de rendimiento
+
+### 2. Mejoras en la Robustez (Alta Prioridad)
+- [ ] Implementar validación más estricta de datos de entrada
+- [ ] Mejorar el sistema de logging para debugging
+- [ ] Añadir monitoreo de salud
+- [ ] Implementar sistema de alertas para fallos
+
+### 3. Documentación y Testing (Media Prioridad)
+- [ ] Crear documentación técnica detallada
+- [ ] Implementar tests unitarios
+- [ ] Añadir tests de integración
+- [ ] Crear guías de usuario
+
+### 4. Características Adicionales (Baja Prioridad)
+- [ ] Implementar dashboard de monitoreo
+- [ ] Añadir más métricas y estadísticas
+- [ ] Mejorar el formato de las notificaciones
+- [ ] Implementar sistema de filtros personalizados
+
+## Criterios de Éxito
+1. Tiempo de procesamiento < 500ms por webhook
+2. Tasa de éxito > 99.9% en el procesamiento
+3. Cobertura de tests > 80%
+4. Documentación completa y actualizada
+
+## Riesgos Identificados
+1. **Riesgo**: Latencia en la obtención de metadatos
+   - **Mitigación**: Implementar sistema de caché
+   - **Prioridad**: Alta
+
+2. **Riesgo**: Fallos en la API de Protokols
+   - **Mitigación**: Implementar sistema de reintentos y fallback
+   - **Prioridad**: Alta
+
+3. **Riesgo**: Problemas de codificación en Telegram
+   - **Mitigación**: Mejorar el manejo de caracteres especiales
+   - **Prioridad**: Media
+
+## Plan de Implementación
+
+### Fase 1: Optimización (Sprint 1)
+1. Implementar sistema de caché
+2. Optimizar procesamiento de webhooks
+3. Mejorar manejo de errores
+
+### Fase 2: Robustez (Sprint 2)
+1. Implementar validación de datos
+2. Mejorar sistema de logging
+3. Añadir monitoreo de salud
+
+### Fase 3: Testing y Documentación (Sprint 3)
+1. Implementar tests unitarios
+2. Crear documentación técnica
+3. Añadir guías de usuario
+
+### Fase 4: Características Adicionales (Sprint 4)
+1. Implementar dashboard
+2. Añadir métricas
+3. Mejorar notificaciones
+
+## Métricas de Éxito
+- Tiempo de procesamiento por webhook
+- Tasa de éxito en el procesamiento
+- Cobertura de tests
+- Tiempo de respuesta de las APIs
+- Uso de recursos del sistema
+
+## Próximos Pasos Inmediatos
+1. Comenzar con la implementación del sistema de caché
+2. Mejorar el sistema de logging
+3. Implementar validación de datos más estricta
+
+¿Deseas que procedamos con alguno de estos pasos o prefieres revisar algún aspecto específico del plan?
+
+## Plan de Refactorización Modular
+
+### Objetivo
+Modularizar el sistema actual manteniendo su funcionalidad exacta, creando componentes estancos que se comunican a través de interfaces bien definidas.
+
+### Componentes Identificados
+1. **HeliusService** (Módulo: `services/helius_service.py`)
+   - Responsabilidad: Interacción con la API de Helius
+   - Funciones actuales:
+     - `extract_token_metadata(webhook_data)`
+   - Interfaz:
+     ```python
+     def get_token_metadata(mint_address: str) -> Dict[str, Any]
+     def validate_webhook(webhook_data: Dict[str, Any]) -> bool
+     ```
+
+2. **IPFSService** (Módulo: `services/ipfs_service.py`)
+   - Responsabilidad: Obtención de metadatos desde IPFS
+   - Funciones actuales:
+     - `extract_token_metadata_from_ipfs(ipfs_url, mint_address)`
+   - Interfaz:
+     ```python
+     def get_token_metadata(ipfs_url: str, mint_address: str) -> Dict[str, Any]
+     ```
+
+3. **NotableService** (Módulo: `services/notable_service.py`)
+   - Responsabilidad: Obtención de datos de notables
+   - Funciones actuales:
+     - `get_notables(twitter_username)`
+   - Interfaz:
+     ```python
+     def get_notable_followers(twitter_username: str) -> Dict[str, Any]
+     ```
+
+4. **TelegramService** (Módulo: `services/telegram_service.py`)
+   - Responsabilidad: Formateo y envío de mensajes a Telegram
+   - Funciones actuales:
+     - `format_telegram_message(token_metadata, notable_data)`
+     - `send_telegram_message(message, image_url)`
+   - Interfaz:
+     ```python
+     def format_message(token_metadata: Dict[str, Any], notable_data: Dict[str, Any]) -> str
+     def send_message(message: str, image_url: Optional[str] = None) -> bool
+     ```
+
+5. **WebhookProcessor** (Módulo: `services/webhook_processor.py`)
+   - Responsabilidad: Procesamiento principal del webhook
+   - Funciones actuales:
+     - `process_webhook(webhook_data)`
+   - Interfaz:
+     ```python
+     def process_webhook(webhook_data: Dict[str, Any]) -> Dict[str, Any]
+     ```
+
+### Plan de Implementación
+
+#### Fase 1: Creación de Estructura Base
+1. [ ] Crear estructura de directorios:
+   ```
+   /src
+     /services
+       - helius_service.py
+       - ipfs_service.py
+       - notable_service.py
+       - telegram_service.py
+       - webhook_processor.py
+     /utils
+       - formatters.py
+       - config.py
+     /main.py
+   ```
+
+2. [ ] Crear archivo de configuración centralizado:
+   ```python
+   # config.py
+   class Config:
+       HELIUS_API_KEY = "133cc99a-6f02-4783-9ada-c013a79343a6"
+       TIMEOUT = 5
+       # ... otras configuraciones
+   ```
+
+#### Fase 2: Implementación de Servicios
+1. [ ] Implementar cada servicio manteniendo la lógica actual
+2. [ ] Añadir interfaces bien definidas
+3. [ ] Implementar logging en cada servicio
+4. [ ] Añadir manejo de errores específico
+
+#### Fase 3: Integración
+1. [ ] Crear script principal que use los servicios
+2. [ ] Implementar pruebas de integración
+3. [ ] Verificar que todo funciona igual que antes
+
+### Criterios de Éxito
+1. ✅ Cada componente es independiente y testeable
+2. ✅ La funcionalidad actual se mantiene exactamente igual
+3. ✅ Los logs y manejo de errores son consistentes
+4. ✅ Las interfaces son claras y bien documentadas
+
+### Plan de Pruebas
+1. [ ] Probar cada servicio individualmente
+2. [ ] Probar la integración completa
+3. [ ] Verificar que los mensajes de Telegram son idénticos
+4. [ ] Comprobar que el manejo de errores es consistente
+
+### Riesgos y Mitigación
+1. **Riesgo**: Cambios no intencionales en la funcionalidad
+   - **Mitigación**: Mantener tests de integración que verifiquen el comportamiento exacto
+
+2. **Riesgo**: Problemas de configuración
+   - **Mitigación**: Centralizar toda la configuración en un solo lugar
+
+3. **Riesgo**: Pérdida de logs o información de debugging
+   - **Mitigación**: Mantener el mismo formato de logging en todos los servicios
+
+### Próximos Pasos
+1. Crear la estructura de directorios
+2. Implementar el primer servicio (HeliusService)
+3. Verificar que funciona exactamente igual
+4. Continuar con los demás servicios uno por uno
+
+## Lección: Análisis del problema con las cookies en test_webhook_local.py
+
+### ¿Qué ocurrió?
+Durante la sesión, el script dejó de funcionar correctamente al intentar cargar las cookies de Protokols. El error era:
+
+    ERROR - No se pudieron cargar las cookies de Protokols
+    ERROR - No se pudo generar el mensaje para Telegram
+
+### Causa raíz
+El archivo `protokols_cookies.json` contiene una **lista** de objetos cookie (formato estándar exportado por navegadores/playwright), pero la función `load_protokols_cookies()` esperaba un **diccionario**. Al modificar la función para devolver el contenido tal cual (sin convertir la lista a diccionario), la función `get_notables` no recibía el formato esperado y fallaba silenciosamente.
+
+### Qué cambio lo provocó
+- Se cambió la función `load_protokols_cookies` para que devolviera el JSON tal cual si era un dict, o un dict vacío si no. Esto rompió la compatibilidad con la función `get_notables`, que espera un diccionario de nombre:valor.
+- El formato correcto (que funcionaba al inicio) era convertir la lista de cookies a un diccionario `{name: value}` antes de devolverlo.
+
+### Solución
+- Restaurar la función para que convierta la lista de cookies a un diccionario antes de devolverlo.
+
+### Recomendación
+- Documentar siempre el formato esperado de los datos de entrada/salida en funciones críticas.
+- No modificar funciones que ya están funcionando salvo que sea estrictamente necesario y siempre guardar una copia de seguridad.
+- Si un archivo JSON contiene una lista de cookies, convertirlo a diccionario antes de usarlo en requests.
+
+### Estado actual
+El sistema funciona correctamente tras restaurar la función original.
+
+## Lessons Learned (actualización crítica)
+
+- **Nunca modificar funciones críticas que ya funcionan sin entender completamente el formato de entrada/salida y sin pruebas exhaustivas.**
+- **Si algo funciona, NO LO TOQUES salvo que sea estrictamente necesario y tengas una razón clara y justificada.**
+- **Siempre documentar el formato esperado de los datos y validar con ejemplos reales antes de cambiar cualquier función.**
+- El error de las cookies fue causado por eliminar la conversión de lista a diccionario, rompiendo la compatibilidad con la función que las usaba. Esto demuestra que "simplificar" sin entender el flujo real puede romper el sistema.
+- Antes de "mejorar" o "generalizar" código, revisa el contrato de las funciones y haz pruebas con datos reales.
+- Si tienes dudas, consulta la documentación, los ejemplos reales o pregunta antes de cambiar algo que ya está probado.
+
+# Plan de Respaldo del Proyecto
+
+## Background y Motivación
+Necesitamos crear un punto de respaldo seguro del proyecto en su estado actual funcional, para poder volver a este punto en cualquier momento si algo sale mal en el futuro.
+
+## Key Challenges y Analysis
+- El proyecto tiene múltiples archivos y directorios que necesitan ser respaldados
+- Necesitamos asegurarnos de no incluir archivos innecesarios (como __pycache__, .venv, etc.)
+- Debemos mantener una estructura organizada del respaldo
+- Es importante documentar el estado exacto del respaldo
+
+## High-level Task Breakdown
+
+1. Crear un nuevo directorio de respaldo con timestamp
+   - Success Criteria: Directorio creado con nombre que incluye fecha y hora
+
+2. Copiar archivos esenciales del proyecto
+   - Success Criteria: Todos los archivos .py, .json, .md, .txt, .bat, .sh copiados
+   - Excluir: __pycache__, .venv, .git, .pytest_cache, logs, screenshots, cache
+
+3. Crear un archivo de documentación del respaldo
+   - Success Criteria: Archivo README.md creado con:
+     - Fecha y hora del respaldo
+     - Lista de archivos incluidos
+     - Estado funcional del proyecto
+     - Instrucciones para restaurar
+
+4. Verificar la integridad del respaldo
+   - Success Criteria: Todos los archivos copiados correctamente y accesibles
+
+## Project Status Board
+- [ ] Crear directorio de respaldo
+- [ ] Copiar archivos esenciales
+- [ ] Crear documentación
+- [ ] Verificar integridad
+
+## Executor's Feedback o Assistance Requests
+(Pendiente de ejecución)
+
+## Lessons
+- Mantener respaldos organizados con timestamps
+- Documentar el estado del proyecto en cada respaldo
+- Excluir archivos innecesarios para mantener el respaldo limpio
+
+# Plan de Producción para Sistema de Webhooks
+
+## Background y Motivación
+El sistema actual está funcionando correctamente en desarrollo, pero necesita ser adaptado para un entorno de producción que garantice:
+- Procesamiento 24/7 de webhooks
+- Alta disponibilidad
+- Escalabilidad
+- Monitoreo y alertas
+- Recuperación automática de fallos
+
+## Key Challenges y Analysis
+1. **Alta Disponibilidad**
+   - El servidor actual es de desarrollo (Flask)
+   - No hay sistema de respaldo
+   - No hay monitoreo de salud
+
+2. **Procesamiento de Datos**
+   - Necesitamos garantizar que ningún webhook se pierda
+   - El procesamiento debe ser asíncrono
+   - Necesitamos un sistema de colas
+
+3. **Infraestructura**
+   - El servidor debe estar siempre accesible
+   - Necesitamos un dominio público
+   - SSL/TLS para seguridad
+
+4. **Monitoreo y Logging**
+   - Sistema centralizado de logs
+   - Alertas en tiempo real
+   - Métricas de rendimiento
+
+## High-level Task Breakdown
+
+### 1. Infraestructura Base
+- [ ] Configurar servidor de producción (Ubuntu/Debian)
+- [ ] Configurar Nginx como reverse proxy
+- [ ] Configurar SSL/TLS con Let's Encrypt
+- [ ] Configurar dominio público
+- [ ] Configurar firewall y seguridad
+
+### 2. Sistema de Procesamiento
+- [ ] Migrar de Flask a Gunicorn/uWSGI
+- [ ] Implementar sistema de colas (Redis/RabbitMQ)
+- [ ] Configurar workers para procesamiento asíncrono
+- [ ] Implementar sistema de reintentos
+- [ ] Configurar base de datos para persistencia
+
+### 3. Monitoreo y Logging
+- [ ] Configurar ELK Stack o similar
+- [ ] Implementar sistema de alertas (Telegram/Email)
+- [ ] Configurar métricas con Prometheus/Grafana
+- [ ] Implementar health checks
+- [ ] Configurar backups automáticos
+
+### 4. Automatización y CI/CD
+- [ ] Configurar pipeline de CI/CD
+- [ ] Automatizar despliegues
+- [ ] Implementar tests automatizados
+- [ ] Configurar rollbacks automáticos
+- [ ] Documentar proceso de despliegue
+
+### 5. Escalabilidad
+- [ ] Implementar balanceo de carga
+- [ ] Configurar auto-scaling
+- [ ] Optimizar base de datos
+- [ ] Implementar caché
+- [ ] Configurar CDN si es necesario
+
+## Project Status Board
+- [ ] Fase 1: Infraestructura Base
+- [ ] Fase 2: Sistema de Procesamiento
+- [ ] Fase 3: Monitoreo y Logging
+- [ ] Fase 4: Automatización
+- [ ] Fase 5: Escalabilidad
+
+## Executor's Feedback o Assistance Requests
+Pendiente de ejecución
+
+## Lessons
+- Usar Gunicorn/uWSGI en lugar de Flask development server
+- Implementar sistema de colas para procesamiento asíncrono
+- Configurar monitoreo desde el inicio
+- Mantener logs centralizados
+- Implementar health checks
+- Usar SSL/TLS para todas las conexiones
+- Configurar backups automáticos
+
+# Análisis de Alternativas a Contabo para Despliegue
+
+## Background y Motivación
+El usuario tiene una cuenta en Contabo pero busca una solución más sencilla y eficiente para desplegar el sistema de webhooks. Necesitamos analizar alternativas que sean:
+- Más fáciles de configurar
+- Más económicas
+- Más escalables
+- Con mejor rendimiento
+
+## Key Challenges y Analysis
+
+### 1. Requisitos del Sistema
+- Procesamiento de webhooks 24/7
+- Bajo consumo de recursos (Python + Redis)
+- Necesidad de dominio público
+- SSL/TLS para seguridad
+- Monitoreo básico
+
+### 2. Análisis de Alternativas
+
+#### A. Railway.app
+**Ventajas:**
+- Despliegue con un solo comando
+- SSL/TLS automático
+- Dominio gratuito
+- Escalado automático
+- Monitoreo incluido
+- Precio: $5/mes (más que suficiente para nuestro caso)
+
+**Desventajas:**
+- Menos control sobre el servidor
+- Límites en recursos
+
+#### B. Render.com
+**Ventajas:**
+- Despliegue automático desde GitHub
+- SSL/TLS gratuito
+- Dominio gratuito
+- Monitoreo incluido
+- Precio: $7/mes (suficiente para nuestro caso)
+
+**Desventajas:**
+- Menos flexible que un VPS
+- Límites en recursos
+
+#### C. DigitalOcean App Platform
+**Ventajas:**
+- Muy fácil de usar
+- SSL/TLS automático
+- Dominio gratuito
+- Monitoreo incluido
+- Precio: $5/mes
+
+**Desventajas:**
+- Menos control que un VPS
+- Límites en recursos
+
+#### D. Heroku
+**Ventajas:**
+- Muy fácil de usar
+- SSL/TLS automático
+- Dominio gratuito
+- Monitoreo incluido
+- Precio: $5/mes
+
+**Desventajas:**
+- Menos control que un VPS
+- Límites en recursos
+
+## Recomendación
+**Railway.app** sería la mejor opción por:
+1. Más económico que Contabo
+2. Despliegue más sencillo
+3. SSL/TLS automático
+4. Monitoreo incluido
+5. Escalado automático
+6. No requiere configuración de servidor
+
+## High-level Task Breakdown
+
+### 1. Preparación del Proyecto
+- [ ] Crear archivo `railway.toml` para configuración
+- [ ] Añadir `Procfile` para Railway
+- [ ] Configurar variables de entorno
+- [ ] Preparar Dockerfile (opcional)
+
+### 2. Despliegue en Railway
+- [ ] Crear cuenta en Railway
+- [ ] Conectar con GitHub
+- [ ] Configurar variables de entorno
+- [ ] Desplegar aplicación
+
+### 3. Configuración Post-Despliegue
+- [ ] Verificar SSL/TLS
+- [ ] Configurar dominio personalizado (opcional)
+- [ ] Probar webhook
+- [ ] Configurar monitoreo
+
+## Project Status Board
+- [ ] Fase 1: Preparación del Proyecto
+- [ ] Fase 2: Despliegue en Railway
+- [ ] Fase 3: Configuración Post-Despliegue
+
+## Executor's Feedback o Assistance Requests
+Pendiente de ejecución
+
+## Lessons
+- Railway.app es más económico y sencillo que Contabo
+- No requiere configuración de servidor
+- SSL/TLS y monitoreo incluidos
+- Escalado automático
+- Despliegue con un solo comando
+
+# Guía de Despliegue en Railway.app
+
+## Background y Motivación
+El usuario quiere conocer el tiempo estimado para desplegar en Railway.app vs Contabo.
+
+## Key Challenges y Analysis
+1. **Preparación del Proyecto**
+   - Crear archivos de configuración
+   - Ajustar variables de entorno
+   - Preparar para despliegue
+
+2. **Proceso de Despliegue**
+   - Crear cuenta
+   - Conectar con GitHub
+   - Configurar proyecto
+   - Desplegar
+
+## High-level Task Breakdown
+
+### 1. Preparación del Proyecto (15 minutos)
+```bash
+# 1. Crear railway.toml
+[build]
+builder = "nixpacks"
+buildCommand = "pip install -r requirements.txt"
+
+[deploy]
+startCommand = "python webhook_server.py"
+healthcheckPath = "/status"
+healthcheckTimeout = 100
+restartPolicyType = "on-failure"
+restartPolicyMaxRetries = 10
+```
+
+### 2. Despliegue en Railway (10 minutos)
+1. Crear cuenta en Railway.app (2 minutos)
+2. Conectar con GitHub (1 minuto)
+3. Seleccionar repositorio (1 minuto)
+4. Configurar variables de entorno (3 minutos)
+5. Iniciar despliegue (3 minutos)
+
+## Project Status Board
+- [ ] Fase 1: Preparación del Proyecto
+- [ ] Fase 2: Despliegue en Railway
+
+## Tiempo Total Estimado
+- Tiempo total: ~25 minutos
+- Nivel de dificultad: Bajo
+- No requiere conocimientos técnicos avanzados
+
+## Comparación de Tiempos
+- Railway.app: ~25 minutos
+- Contabo: ~2 horas
+
+## Ventajas de Railway.app
+1. Despliegue mucho más rápido
+2. No requiere configuración manual
+3. SSL/TLS automático
+4. Dominio gratuito incluido
+5. Monitoreo incluido
+6. Escalado automático
+
+## Desventajas de Railway.app
+1. Menos control sobre el servidor
+2. Límites en recursos
+3. Precio puede aumentar con uso
+
+## Lessons
+- Railway.app es significativamente más rápido que Contabo
+- No requiere conocimientos de Linux
+- Todo es automático y gestionado
+- Ideal para proyectos pequeños/medianos
+- Perfecto para webhooks y APIs
+
+# Guía Paso a Paso: Despliegue en Railway.app
+
+## Background y Motivación
+El usuario necesita una guía detallada desde el registro hasta el despliegue completo en Railway.app.
+
+## High-level Task Breakdown
+
+### 1. Registro y Configuración Inicial (5 minutos)
+1. **Crear cuenta**:
+   - Ir a [railway.app](https://railway.app)
+   - Click en "Start a New Project"
+   - Seleccionar "Sign up with GitHub"
+   - Autorizar Railway.app
+
+2. **Crear nuevo proyecto**:
+   - Click en "New Project"
+   - Seleccionar "Deploy from GitHub repo"
+   - Seleccionar tu repositorio
+
+### 2. Preparación del Proyecto (10 minutos)
+1. **Crear archivo `railway.toml`**:
+```toml
+[build]
+builder = "nixpacks"
+buildCommand = "pip install -r requirements.txt"
+
+[deploy]
+startCommand = "python webhook_server.py"
+healthcheckPath = "/status"
+healthcheckTimeout = 100
+restartPolicyType = "on-failure"
+restartPolicyMaxRetries = 10
+```
+
+2. **Configurar variables de entorno**:
+   - Click en "Variables" en el panel de Railway
+   - Añadir las siguientes variables:
+     ```
+     TELEGRAM_BOT_TOKEN=tu_token
+     TELEGRAM_CHANNEL_ID=tu_channel_id
+     HELIUS_API_KEY=tu_api_key
+     ```
+
+### 3. Despliegue (10 minutos)
+1. **Iniciar despliegue**:
+   - Click en "Deploy Now"
+   - Esperar a que termine el build (2-3 minutos)
+
+2. **Verificar despliegue**:
+   - Revisar logs en tiempo real
+   - Verificar que el servicio está "Healthy"
+   - Copiar la URL generada (será algo como `https://tu-proyecto.up.railway.app`)
+
+### 4. Configuración Final (5 minutos)
+1. **Actualizar webhook en Helius**:
+   - Ir a [Helius Dashboard](https://dev.helius.xyz/dashboard)
+   - Actualizar la URL del webhook con la nueva URL de Railway
+   - Añadir `/webhook` al final de la URL
+
+2. **Probar el webhook**:
+   - Usar el endpoint de prueba de Helius
+   - Verificar que llegan las notificaciones a Telegram
+
+## Project Status Board
+- [ ] Registro en Railway.app
+- [ ] Preparación del proyecto
+- [ ] Despliegue inicial
+- [ ] Configuración final
+
+## Verificación de Éxito
+1. El servicio está "Healthy" en Railway
+2. Los logs muestran que el servidor está corriendo
+3. El webhook responde a las pruebas de Helius
+4. Las notificaciones llegan a Telegram
+
+## Troubleshooting Común
+1. **Error en build**:
+   - Verificar `requirements.txt`
+   - Revisar logs de build
+
+2. **Error en despliegue**:
+   - Verificar variables de entorno
+   - Revisar logs de despliegue
+
+3. **Webhook no responde**:
+   - Verificar URL en Helius
+   - Comprobar logs del servidor
+
+## Lessons
+- Siempre verificar las variables de entorno
+- Mantener los logs abiertos durante el despliegue
+- Probar el webhook después de cada cambio
+- Guardar la URL del proyecto

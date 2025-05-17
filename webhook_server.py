@@ -181,6 +181,9 @@ def process_webhook(webhook_data: Dict[str, Any]) -> Optional[Dict[str, Any]]:
             if notable_data:
                 top_notables = notable_data.get('top', [])
                 logger.info(f"Top notables encontrados: {len(top_notables)}")
+                if len(top_notables) < 5:
+                    logger.info("Token ignorado: el creador tiene menos de 5 notables.")
+                    return None
                 if not top_notables:
                     logger.warning("La lista de top notables está vacía")
         logger.info(f"Procesamiento completado para token {token_metadata['address']}")

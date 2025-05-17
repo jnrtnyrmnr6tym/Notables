@@ -1689,3 +1689,60 @@ restartPolicyMaxRetries = 10
 - Mantener los logs abiertos durante el despliegue
 - Probar el webhook después de cada cambio
 - Guardar la URL del proyecto
+
+# Proyecto Notables
+
+## Background and Motivation
+Servidor webhook para recibir notificaciones de Helius sobre nuevos tokens y verificar si sus creadores tienen seguidores notables.
+
+## Key Challenges and Analysis
+- Despliegue exitoso en Railway
+- Configuración correcta del webhook
+- Integración con Helius
+
+## High-level Task Breakdown
+1. ✅ Despliegue en Railway
+   - Configuración del entorno
+   - Instalación de dependencias
+   - Configuración del servidor
+
+2. ✅ Configuración del Webhook
+   - URL: https://notables-production.up.railway.app/webhook
+   - Endpoint /status: {"status":"healthy"}
+   - Endpoint /webhook: Listo para recibir peticiones POST
+
+3. ✅ Integración con Helius
+   - URL del webhook configurada en Helius
+   - Esperando nuevas notificaciones
+
+## Project Status Board
+- [x] Despliegue en Railway
+- [x] Configuración del webhook
+- [x] Integración con Helius
+- [ ] Recepción de primera notificación
+- [ ] Verificación de mensajes en Telegram
+
+## Executor's Feedback or Assistance Requests
+- Servidor desplegado correctamente
+- Endpoints funcionando según lo esperado
+- Webhook configurado y listo para recibir notificaciones
+
+## Lessons
+1. Railway requiere configuración específica para Python:
+   - Procfile para el comando de inicio
+   - Variables de entorno para el puerto
+   - Dependencias correctamente especificadas
+
+2. Endpoints del servidor:
+   - /status: GET - Verificación de salud del servidor
+   - /webhook: POST - Recepción de notificaciones de Helius
+
+3. Configuración de Helius:
+   - URL del webhook: https://notables-production.up.railway.app/webhook
+   - Método: POST
+   - Content-Type: application/json
+
+## Next Steps
+1. Monitorear logs en Railway para verificar recepción de notificaciones
+2. Verificar envío de mensajes a Telegram
+3. Ajustar configuración si es necesario basado en las primeras notificaciones

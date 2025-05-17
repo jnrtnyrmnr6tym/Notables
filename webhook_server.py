@@ -32,6 +32,11 @@ print("="*50 + "\n")
 
 app = Flask(__name__)
 
+@app.route('/status', methods=['GET'])
+def status():
+    """Health check endpoint for Railway."""
+    return jsonify({"status": "healthy"}), 200
+
 @app.route('/webhook', methods=['POST'])
 def webhook():
     """Handle incoming webhooks from Helius."""

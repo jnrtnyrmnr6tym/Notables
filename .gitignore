@@ -48,7 +48,7 @@ ipfs_cache/
 *.swo
 
 # Archivos de datos sensibles
-*_cookies.json
+# *_cookies.json
 *.env
 
 # Archivos de prueba

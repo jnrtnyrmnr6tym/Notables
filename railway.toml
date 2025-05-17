@@ -2,12 +2,5 @@
 builder = "nixpacks"
 buildCommand = "pip install -r requirements.txt"
 
-[deploy]
-startCommand = "gunicorn webhook_server:app --bind 0.0.0.0:$PORT"
-healthcheckPath = "/status"
-healthcheckTimeout = 100
-restartPolicyType = "on-failure"
-restartPolicyMaxRetries = 10
-
 [deploy.env]
 PORT = "3003" 

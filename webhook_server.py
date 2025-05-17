@@ -106,6 +106,18 @@ def extract_token_metadata(webhook_data: Dict[str, Any]) -> Optional[Dict[str, A
         logger.error(f"Error al extraer metadatos del token: {str(e)}")
         return None
 
+def format_compact_number(n):
+    if n is None:
+        return "?"
+    if isinstance(n, str):
+        return n
+    if n >= 1_000_000:
+        return f"{n/1_000_000:.1f}M"
+    elif n >= 1_000:
+        return f"{n/1_000:.1f}K"
+    else:
+        return str(n)
+
 def format_telegram_message(token_metadata: Dict[str, Any], notable_data: Dict[str, Any]) -> str:
     top_notables = notable_data.get('top', []) if notable_data else []
     name = token_metadata['name']
@@ -133,8 +145,9 @@ def format_telegram_message(token_metadata: Dict[str, Any], notable_data: Dict[s
     for i, notable in enumerate(top_notables, 1):
         username = notable['username']
         followers = notable['followersCount']
+        followers_str = format_compact_number(followers)
         notable_link = f'<a href="https://twitter.com/{username}">@{username}</a>'
-        message += f"– {i}. {notable_link} ({followers:,} followers)\n"
+        message += f"– {i}. {notable_link} ({followers_str} followers)\n"
     message += f"\n💰 <b>Trade on:</b>\n{bots_line}\n"
     return message
 

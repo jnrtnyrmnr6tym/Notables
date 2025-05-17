@@ -179,12 +179,12 @@ def process_webhook(webhook_data: Dict[str, Any]) -> Optional[Dict[str, Any]]:
             notable_data = get_notables(token_metadata['twitter'], cookies)
             logger.info(f"Datos de notables obtenidos: {json.dumps(notable_data, indent=2)}")
             if notable_data:
-                top_notables = notable_data.get('top', [])
-                logger.info(f"Top notables encontrados: {len(top_notables)}")
-                if len(top_notables) < 5:
+                total_notables = notable_data.get('total', 0)
+                logger.info(f"Total de notables encontrados: {total_notables}")
+                if total_notables < 5:
                     logger.info("Token ignorado: el creador tiene menos de 5 notables.")
                     return None
-                if not top_notables:
+                if not notable_data.get('top', []):
                     logger.warning("La lista de top notables está vacía")
         logger.info(f"Procesamiento completado para token {token_metadata['address']}")
         telegram_message = format_telegram_message(token_metadata, notable_data)

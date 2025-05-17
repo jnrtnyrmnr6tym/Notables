@@ -119,6 +119,7 @@ def format_compact_number(n):
         return str(n)
 
 def format_telegram_message(token_metadata: Dict[str, Any], notable_data: Dict[str, Any]) -> str:
+    total_notables = notable_data.get('total', 0) if notable_data else 0
     top_notables = notable_data.get('top', []) if notable_data else []
     name = token_metadata['name']
     symbol = token_metadata['symbol']
@@ -139,7 +140,7 @@ def format_telegram_message(token_metadata: Dict[str, Any], notable_data: Dict[s
         f"<b>Name</b>: {name} ({token_link})\n"
         f"<b>CA</b>: {ca}\n\n"
         f"<b>Creator</b>: {creator_link}\n"
-        f"<b>Notable Followers</b>: {len(top_notables)}\n"
+        f"<b>Notable Followers</b>: {total_notables}\n"
         f"<b>Top 5 Notables</b>:\n"
     )
     for i, notable in enumerate(top_notables, 1):

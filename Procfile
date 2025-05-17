@@ -1,1 +1,1 @@
-web: gunicorn webhook_server:app --bind 0.0.0.0:$PORT 
+web: gunicorn test_webhook:app --bind 0.0.0.0:$PORT 

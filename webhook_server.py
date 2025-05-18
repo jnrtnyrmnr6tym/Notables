@@ -167,9 +167,35 @@ def load_protokols_cookies() -> Dict:
 
 def process_webhook(webhook_data: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     try:
+        # Verificar si la wallet está en accountData
+        if not webhook_data or not isinstance(webhook_data, list) or len(webhook_data) == 0:
+            logger.error("Webhook vacío o formato inválido")
+            return None
+            
+        tx = webhook_data[0]
+        account_data = tx.get('accountData', [])
+        target_wallet = "5qWya6UjwWnGVhdSBL3hyZ7B45jbk6Byt1hwd7ohEGXE"
+        
+        # Verificar si la wallet está en accountData
+        if not any(account['account'] == target_wallet for account in account_data):
+            logger.info(f"Wallet {target_wallet} no encontrada en accountData")
+            return None
+            
+        # Verificar si la wallet es la creadora del token
+        token_transfers = tx.get('tokenTransfers', [])
+        if not token_transfers:
+            logger.error("No se encontraron transferencias de token")
+            return None
+            
+        # Verificar si la wallet es la que está enviando el token (creadora)
+        if not any(transfer.get('fromUserAccount') == target_wallet for transfer in token_transfers):
+            logger.info(f"Wallet {target_wallet} no es la creadora del token")
+            return None
+            
         token_metadata = extract_token_metadata(webhook_data)
         if not token_metadata:
             return None
+            
         notable_data = None
         if token_metadata['twitter']:
             logger.info(f"Obteniendo notables para @{token_metadata['twitter']}")

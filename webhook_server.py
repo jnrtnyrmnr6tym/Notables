@@ -73,11 +73,13 @@ def extract_token_metadata_from_ipfs(ipfs_url: str, mint_address: str) -> Option
         twitter = None
         # Caso 1: metadata.tweetCreatorUsername (formato antiguo)
         if 'metadata' in data and data['metadata'] and data['metadata'].get('tweetCreatorUsername'):
+            logger.info("Usando formato antiguo (metadata.tweetCreatorUsername)")
             twitter = data['metadata'].get('tweetCreatorUsername')
         # Caso 2: campo twitter como URL (formato nuevo)
         elif 'twitter' in data and isinstance(data['twitter'], str):
+            logger.info("Usando formato nuevo (campo twitter)")
             # Si es una URL de Twitter/X, extraer el username
-            match = re.search(r'(?:twitter\\.com|x\\.com)/([A-Za-z0-9_]+)', data['twitter'])
+            match = re.search(r'(?:twitter\.com|x\.com)/([A-Za-z0-9_]+)', data['twitter'])
             if match:
                 twitter = match.group(1)
             else:

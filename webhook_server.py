@@ -31,7 +31,7 @@ logger = logging.getLogger(__name__)
 
 # Diccionario de wallets conocidas y sus identificadores
 KNOWN_WALLETS = {
-    "5qWya6UjwWnGVhdSBL3hyZ7B45jbk6Byt1hwd7ohEGXE": "Believe Token",
+    "5qWya6UjwWnGVhdSBL3hyZ7B45jbk6Byt1hwd7ohEGXE": "Believe",
     "5JzRjmLSy5YR4ReFRpCK9k3WuToUpc7vkBhWPyy89kQ4": "Launch On Pump"
 }
 
@@ -143,7 +143,7 @@ def format_telegram_message(token_metadata: Dict[str, Any], notable_data: Dict[s
     bots_line = " | ".join([f"<a href='{url}'>{name}</a>" for name, url in bots_links])
     
     # Añadir el identificador de la wallet al título si está disponible
-    title = f"New {wallet_identifier} Token Detected" if wallet_identifier else "New Token Detected"
+    title = f"New {wallet_identifier} Token Detected!" if wallet_identifier else "New Token Detected!"
     
     message = (
         f"<b>{title}</b>\n\n"

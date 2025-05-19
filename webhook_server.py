@@ -29,6 +29,12 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# Diccionario de wallets conocidas y sus identificadores
+KNOWN_WALLETS = {
+    "5qWya6UjwWnGVhdSBL3hyZ7B45jbk6Byt1hwd7ohEGXE": "Believe Token",
+    "5JzRjmLSy5YR4ReFRpCK9k3WuToUpc7vkBhWPyy89kQ4": "Launch On Pump"
+}
+
 app = Flask(__name__)
 
 TIMEOUT = 5  # segundos
@@ -118,7 +124,7 @@ def format_compact_number(n):
     else:
         return str(n)
 
-def format_telegram_message(token_metadata: Dict[str, Any], notable_data: Dict[str, Any]) -> str:
+def format_telegram_message(token_metadata: Dict[str, Any], notable_data: Dict[str, Any], wallet_identifier: str = None) -> str:
     total_notables = notable_data.get('total', 0) if notable_data else 0
     top_notables = notable_data.get('top', []) if notable_data else []
     name = token_metadata['name']
@@ -135,8 +141,12 @@ def format_telegram_message(token_metadata: Dict[str, Any], notable_data: Dict[s
         ("PHOTON", f"https://photon-sol.tinyastro.io/en/r/@notable/{ca}")
     ]
     bots_line = " | ".join([f"<a href='{url}'>{name}</a>" for name, url in bots_links])
+    
+    # Añadir el identificador de la wallet al título si está disponible
+    title = f"New {wallet_identifier} Token Detected" if wallet_identifier else "New Token Detected"
+    
     message = (
-        f"<b>New Token Detected</b>\n\n"
+        f"<b>{title}</b>\n\n"
         f"<b>Name</b>: {name} ({token_link})\n"
         f"<b>CA</b>: {ca}\n\n"
         f"<b>Creator</b>: {creator_link}\n"
@@ -173,13 +183,19 @@ def process_webhook(webhook_data: Dict[str, Any]) -> Optional[Dict[str, Any]]:
             return None
             
         tx = webhook_data[0]
-        target_wallet = "5qWya6UjwWnGVhdSBL3hyZ7B45jbk6Byt1hwd7ohEGXE"
+        fee_payer = tx.get('feePayer')
+        
+        # Verificar si el feePayer está en nuestra lista de wallets conocidas
+        wallet_identifier = KNOWN_WALLETS.get(fee_payer)
+        if not wallet_identifier:
+            logger.info(f"Token ignorado: feePayer {fee_payer} no está en la lista de wallets conocidas")
+            return None
         
         # Verificar si es una creación de token (mint)
         token_transfers = tx.get('tokenTransfers', [])
         if token_transfers and token_transfers[0].get('mint') == token_transfers[0].get('toTokenAccount'):
             # Si es una creación, verificar si nuestra wallet es el Payer
-            if tx.get('feePayer') == target_wallet:
+            if fee_payer in KNOWN_WALLETS:
                 logger.info(f"Token ignorado: creación fraudulenta detectada (nuestra wallet es el Payer)")
                 return None
         
@@ -205,7 +221,7 @@ def process_webhook(webhook_data: Dict[str, Any]) -> Optional[Dict[str, Any]]:
                 if not notable_data.get('top', []):
                     logger.warning("La lista de top notables está vacía")
         logger.info(f"Procesamiento completado para token {token_metadata['address']}")
-        telegram_message = format_telegram_message(token_metadata, notable_data)
+        telegram_message = format_telegram_message(token_metadata, notable_data, wallet_identifier)
         return {
             "token_metadata": token_metadata,
             "notable_data": notable_data,

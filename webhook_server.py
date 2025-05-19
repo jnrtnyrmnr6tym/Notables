@@ -14,6 +14,9 @@ from typing import Dict, Any, Optional
 from dotenv import load_dotenv
 from protokols_smart_followers_fast import get_smart_followers_ultrafast as get_notables
 from datetime import datetime
+import re
+
+# Redeploy trigger Railway v3
 
 # Cargar variables de entorno
 load_dotenv()
@@ -43,15 +46,46 @@ TIMEOUT = 5  # segundos
 def extract_token_metadata_from_ipfs(ipfs_url: str, mint_address: str) -> Optional[Dict[str, Any]]:
     try:
         logger.info(f"Descargando metadatos desde IPFS: {ipfs_url}")
-        response = requests.get(ipfs_url, timeout=10)
-        response.raise_for_status()
-        data = response.json()
+        try:
+            response = requests.get(ipfs_url, timeout=10)
+            response.raise_for_status()
+            data = response.json()
+        except Exception as e:
+            # Si la URL es de cloudflare-ipfs.com, intentar con ipfs.io
+            if "cloudflare-ipfs.com" in ipfs_url:
+                match = re.search(r"/ipfs/([A-Za-z0-9]+)", ipfs_url)
+                if match:
+                    ipfs_hash = match.group(1)
+                    fallback_url = f"https://ipfs.io/ipfs/{ipfs_hash}"
+                    logger.warning(f"Fallo en cloudflare-ipfs.com, intentando con ipfs.io: {fallback_url}")
+                    response = requests.get(fallback_url, timeout=10)
+                    response.raise_for_status()
+                    data = response.json()
+                else:
+                    logger.error(f"No se pudo extraer el hash de IPFS de la URL: {ipfs_url}")
+                    return None
+            else:
+                logger.error(f"Error al extraer metadatos de IPFS: {str(e)}")
+                return None
         name = data.get('name')
         symbol = data.get('symbol')
         image = data.get('image')
         twitter = None
-        if 'metadata' in data and data['metadata']:
+        # Caso 1: metadata.tweetCreatorUsername (formato antiguo)
+        if 'metadata' in data and data['metadata'] and data['metadata'].get('tweetCreatorUsername'):
             twitter = data['metadata'].get('tweetCreatorUsername')
+        # Caso 2: campo twitter como URL (formato nuevo)
+        elif 'twitter' in data and isinstance(data['twitter'], str):
+            # Si es una URL de Twitter/X, extraer el username
+            match = re.search(r'(?:twitter\\.com|x\\.com)/([A-Za-z0-9_]+)', data['twitter'])
+            if match:
+                twitter = match.group(1)
+            else:
+                # Si es un @username directo
+                if data['twitter'].startswith('@'):
+                    twitter = data['twitter'][1:]
+                else:
+                    twitter = data['twitter']
         if not all([name, symbol]):
             logger.error(f"Faltan campos requeridos en los metadatos de IPFS para {mint_address}")
             return None
